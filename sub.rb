@@ -18,14 +18,14 @@ class EditSubtitles
 		current_line += " --> "
 	end
 	
-	hour, min, second_with_millisecond= duration.to_s.split(":")#spliting hour, mins, sec 
-	second_only, millisecond = second_with_millisecond.to_s.split(",")# .srt file contain sec with milli sec , here it is splited           	      to second only and milli second
+	hour, min, second_with_millisecond= duration.to_s.split(":")#spliting hour, mins, sec
+	second_only, millisecond = second_with_millisecond.to_s.split(",")# .srt file contain sec with milli sec , here it is splited to second only and milli second
 	hour = hour.to_i
-	min = min.to_i.
-	second_only = second_only.to_i                                 
+	min = min.to_i
+	second_only = second_only.to_i
 	millisecond = millisecond.to_i
 	millisecond += @adjustment_Time
-	second_only += millisecond / 1000                                 # calclation for conversion
+	second_only += millisecond / 1000                         # calclation for conversion
 	millisecond = millisecond % 1000
 	min += second_only / 60
 	second_only = second_only % 60
@@ -34,12 +34,12 @@ class EditSubtitles
 	if (hour < 0)
 	hour, min, second_only, millisecond = '00', '00', '00', '000'
 	end
-	
 	hour = hour.to_s.rjust(2, '0')
 	min = min.to_s.rjust(2, '0')
-	second_only = second_only.to_s.rjust(2, '0')                     #If integer is greater than the length of str, returns a new String of length integer with str right justified and padded with padstr; otherwise, returns str.
+	second_only = second_only.to_s.rjust(2, '0')              #If integer is greater than the length of str, returns a new String of length integer with str right justified and padded with padstr; otherwise, returns str.
 	millisecond = millisecond.to_s.rjust(3, '0')
 	current_line += "#{hour}:#{min}:#{second_only},#{millisecond}"
+
 	end
 	end
 	
